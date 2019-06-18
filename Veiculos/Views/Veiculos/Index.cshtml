@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Veiculo>
+
+@{
+    ViewData["Title"] = "Veículos";
+}
+
+    <h1>
+        <a asp-action="Index"style="color:black">@ViewData["Title"]</a>
+      </h1>
+<br />
+
+<!--         campo pesquisar da página index        -->
+<form asp-controller="Veiculos" asp-action="Index">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-inline">
+                <input name="nomeVeiculo" style="min-width:57%;" class="form-control" />
+                <button class="btn btn-secondary" type="submit">Pesquisar</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+<br />
+    <!--        botão para criar um novo veículo        -->
+    <p>
+        <a asp-action="Criar" class="btn btn-secondary">Novo Veículo</a>
+    </p>
+        <!--      Tabela que exibe os veículos        -->
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr class="success">
+                <!--th>
+        @Html.DisplayNameFor(model => model.Id)
+    </th>-->
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeVeiculo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeFabricante)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AnoFabricacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AnoModelo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Motor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataLancamento)
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--    For para percorrer o model e reencher os veiculos na tabela   -->
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <!--
+                          <td>
+                              @Html.DisplayFor(ModelItem => item.Id)
+                          </td>
+            -->
+                    <td>
+                        @Html.DisplayFor(ModelItem => item.NomeVeiculo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(ModelItem => item.NomeFabricante)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(ModelItem => item.AnoFabricacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(ModelItem => item.AnoModelo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(ModelItem => item.Motor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(ModelItem => item.Cor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(ModelItem => item.DataLancamento)
+                    </td>
+                    <td>
+                        <a asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+                        <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a>
+                        <a asp-action="Remover" asp-route-id="@item.Id">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+

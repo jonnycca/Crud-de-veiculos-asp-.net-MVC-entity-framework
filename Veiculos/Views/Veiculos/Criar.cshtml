@@ -1,0 +1,60 @@
+﻿@model  Veiculo
+
+@{
+    ViewData["Title"] = "Criar";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Criar">
+            <!--<div asp-validation-summary="All" class="text-danger"></div>    validação em sumário-->
+            <div class="form-group">
+                <label asp-for="NomeVeiculo" class="control-label">Nome do veículo</label>
+                <input asp-for="NomeVeiculo" class="form-control" />
+                <span asp-validation-for="NomeVeiculo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeFabricante" class="control-label">Nome do fabricante</label>
+                <input asp-for="NomeFabricante" class="form-control" />
+                <span asp-validation-for="NomeFabricante" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnoModelo" class="control-label">Ano do modelo</label>
+                <select asp-for="AnoModelo" class="form-control" asp-items="ViewBag.viewBagAnoModelo"></select>
+                <span asp-validation-for="AnoModelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnoFabricacao" class="control-label">Ano de fabricação</label>
+                <select asp-for="AnoFabricacao" class="form-control" asp-items="ViewBag.viewBagaAnoFabricacao"></select>
+                <span asp-validation-for="AnoFabricacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Motor" class="control-label">Motor</label>
+                <input asp-for="Motor" class="form-control" />
+                <span asp-validation-for="Motor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cor" class="control-label">Cor</label>
+                <select asp-for="Cor" class="form-control" asp-items="ViewBag.cores"></select>
+                <span asp-validation-for="Cor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataLancamento" class="control-label">Data lançamento no mercado</label>
+                <input asp-for="DataLancamento" class="form-control" />
+                <span asp-validation-for="DataLancamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-secondary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section  Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
